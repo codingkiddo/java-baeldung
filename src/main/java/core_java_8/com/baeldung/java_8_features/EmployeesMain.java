@@ -11,13 +11,17 @@ public class EmployeesMain {
 	
 	private static void testNullPointerException() {
 		List<Employee> employees = EmployeeFactory.getEmployees();
-		int employeeId = 111;
+		int employeeId = 1110;
 		Employee employeeFound = employees.stream().filter(e -> e.getId() == employeeId).findAny().orElse(null);
 		System.out.println(employeeFound == null ? "Not found" : "Found");
 		
 		Optional<Employee> optionalE = employees.stream().filter(e -> e.getId() == employeeId).findAny();
 		
 		System.out.println(optionalE.isPresent() ? optionalE.get().getName() : "UNKNOWN");
+		
+		System.out.println(optionalE.map(Employee::getName).orElse("UNKNOWN"));
+		
+		System.out.println(employees.stream().filter(e->e.getId()==employeeId).findFirst().map(Employee::getName).orElse("UnKnown"));
 	}
 
 }

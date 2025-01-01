@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: core_java_string_operations.com.baeldung.emptystrings.EmptyStringsUnitTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in core_java_string_operations.com.baeldung.emptystrings.EmptyStringsUnitTest

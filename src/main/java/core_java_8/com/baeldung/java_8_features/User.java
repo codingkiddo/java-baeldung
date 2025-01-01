@@ -8,19 +8,27 @@ public class User {
 
     private Address address;
 
-    public Address getAddress() {
+    public User() {
+    }
+    
+    public User(String name) {
+        this.name = name;
+    }
+    
+    public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Address getAddress() {
         return address;
     }
 
     public void setAddress(Address address) {
         this.address = address;
-    }
-
-    public User() {
-    }
-
-    public User(String name) {
-        this.name = name;
     }
 
     public static boolean isRealUser(User user) {

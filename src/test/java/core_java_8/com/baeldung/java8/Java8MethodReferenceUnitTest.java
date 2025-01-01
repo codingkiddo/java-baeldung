@@ -1,9 +1,12 @@
 package core_java_8.com.baeldung.java8;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -31,7 +34,6 @@ public class Java8MethodReferenceUnitTest {
 
 	@Test
     public void checkStaticMethodReferences_whenWork_thenCorrect() {
-
         List<User> users = new ArrayList<>();
         users.add(new User());
         users.add(new User());
@@ -41,6 +43,26 @@ public class Java8MethodReferenceUnitTest {
         
         assertTrue(isReal);
         assertTrue(isRealRef);
-        
 	}
+	
+	@Test
+	public void checkParticularTypeReferences_whenWork_thenCorrect() {
+		long count = list.stream().filter(String::isEmpty).count();
+		assertEquals(count, 2);
+	}
+	
+	 @Test
+	 public void checkInstanceMethodReferences_whenWork_thenCorrect() {
+		 User user = new User();
+		 boolean isLegal = list.stream().anyMatch(user::isLegalName);
+		 assertTrue(isLegal);
+	 }
+	 
+	 @Test
+	 public void checkConstructorReferences_whenWork_thenCorrect() {
+		 Stream<User> usersStream = list.stream().map(User::new);
+		 List<User> usersList = usersStream.collect(Collectors.toList());
+		 assertEquals(list.size(), usersList.size());
+		 assertTrue(usersList.get(0) instanceof User);
+	 }
 }

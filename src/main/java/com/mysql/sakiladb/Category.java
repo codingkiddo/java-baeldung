@@ -1,42 +1,47 @@
 package com.mysql.sakiladb;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
 @Entity
-@Table(name = "country")
-public class Country {
+@Table(name = "category")
+public class Category {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "country_id")
-	private Short countryId;
-	@Column(name = "country")
-	private String country;
+	@Column(name = "category_id")
+	private Byte categoryId;
+	@Column(name = "name")
+	private String name;
 	@Column(name = "last_update")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date lastUpdate;
+	@OneToMany(mappedBy = "category")
+	private Set<FilmCategory> filmCategories = new HashSet<>();
 	
-	public Short getCountryId() {
-		return countryId;
+	public Byte getCategoryId() {
+		return categoryId;
 	}
-	public void setCountryId(Short countryId) {
-		this.countryId = countryId;
+	public void setCategoryId(Byte categoryId) {
+		this.categoryId = categoryId;
 	}
-	public String getCountry() {
-		return country;
+	public String getName() {
+		return name;
 	}
-	public void setCountry(String country) {
-		this.country = country;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public Date getLastUpdate() {
 		return lastUpdate;
@@ -46,7 +51,7 @@ public class Country {
 	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(country, countryId, lastUpdate);
+		return Objects.hash(categoryId, lastUpdate, name);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -56,12 +61,12 @@ public class Country {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Country other = (Country) obj;
-		return Objects.equals(country, other.country) && countryId == other.countryId
-				&& Objects.equals(lastUpdate, other.lastUpdate);
+		Category other = (Category) obj;
+		return Objects.equals(categoryId, other.categoryId) && Objects.equals(lastUpdate, other.lastUpdate)
+				&& Objects.equals(name, other.name);
 	}
 	@Override
 	public String toString() {
-		return "Country [countryId=" + countryId + ", country=" + country + ", lastUpdate=" + lastUpdate + "]";
+		return "Category [categoryId=" + categoryId + ", name=" + name + ", lastUpdate=" + lastUpdate + "]";
 	}
 }

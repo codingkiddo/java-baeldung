@@ -10,10 +10,9 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
-public class HibernateSakilaDbCityMain {
-
-	private static final Logger LOGGER = LoggerFactory.getLogger(HibernateSakilaDbCityMain.class);
+public class HibernateSakilaDbCategoryMain {
+	
+private static final Logger LOGGER = LoggerFactory.getLogger(HibernateSakilaDbCategoryMain.class);
 	
 	public static void main(String[] args) {
 
@@ -27,16 +26,15 @@ public class HibernateSakilaDbCityMain {
 		}
 
 		Session session = sessionFactory.openSession();
-		session.beginTransaction(); 
+		session.beginTransaction();
 		
-		List<City> result = session.createQuery("from City", City.class).list();
-		result.forEach( city -> {
-			System.out.println(city.getCity() + " : " + city.getLastUpdate() + " : " + city.getCountry().getCountry());
+		List<Category> result = session.createQuery("from Category", Category.class).list();
+		result.forEach( category -> {
+			System.out.println(category);
 		});
 		
 		session.getTransaction().commit();
 		session.close();
 		sessionFactory.close();
 	}
-
 }

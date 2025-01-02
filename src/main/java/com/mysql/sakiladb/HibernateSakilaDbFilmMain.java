@@ -30,7 +30,7 @@ private static final Logger LOGGER = LoggerFactory.getLogger(HibernateSakilaDbFi
 		
 		List<Film> result = session.createQuery("from Film", Film.class).list();
 		result.forEach( film -> {
-			System.out.println(film.getTitle() + " : " + film.getDescription());
+			System.out.println(film.getRating());
 		});
 		
 		session.getTransaction().commit();

@@ -22,5 +22,7 @@
         <mapping class="com.mysql.sakiladb.City" />
         <mapping class="com.mysql.sakiladb.Film" />
         <mapping class="com.mysql.sakiladb.Language" />
+        <mapping class="com.mysql.sakiladb.Category" />
+        <mapping class="com.mysql.sakiladb.FilmCategory" />
     </session-factory>
 </hibernate-configuration>

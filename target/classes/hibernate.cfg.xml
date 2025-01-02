@@ -20,5 +20,7 @@
         <!-- Names the annotated entity class -->
         <mapping class="com.mysql.sakiladb.Country" />
         <mapping class="com.mysql.sakiladb.City" />
+        <mapping class="com.mysql.sakiladb.Film" />
+        <mapping class="com.mysql.sakiladb.Language" />
     </session-factory>
 </hibernate-configuration>

@@ -33,7 +33,7 @@ public abstract class Country_ {
 	/**
 	 * @see com.mysql.sakiladb.Country#countryId
 	 **/
-	public static volatile SingularAttribute<Country, Integer> countryId;
+	public static volatile SingularAttribute<Country, Short> countryId;
 
 }
 
